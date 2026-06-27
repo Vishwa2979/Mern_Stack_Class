@@ -2,26 +2,23 @@ let total = 0;
 
 function addExpense(){
 
-    let name = document.getElementById("expenseName").value;
-    let amount = document.getElementById("expenseAmount").value;
+    let name = document.getElementById("name").value;
+    let amount = document.getElementById("amount").value;
 
-    if(name==="" || amount===""){
-        alert("Please fill all fields");
+    if(name == "" || amount == ""){
+        alert("Enter all details");
         return;
     }
 
-    let li = document.createElement("li");
+    let item = document.createElement("li");
+    item.innerHTML = name + " - ₹" + amount;
 
-    li.innerHTML = `
-        <span>${name}</span>
-        <span>₹${amount}</span>
-    `;
+    document.getElementById("list").appendChild(item);
 
-    document.getElementById("expenseList").appendChild(li);
+    total = total + Number(amount);
 
-    total += Number(amount);
-    document.getElementById("total").innerText = total;
+    document.getElementById("total").innerHTML = total;
 
-    document.getElementById("expenseName").value = "";
-    document.getElementById("expenseAmount").value = "";
+    document.getElementById("name").value = "";
+    document.getElementById("amount").value = "";
 }
