@@ -1,25 +1,25 @@
 let total = 0;
 
-function addExpense() {
+function addExpense(){
 
     let name = document.getElementById("expenseName").value;
     let amount = document.getElementById("expenseAmount").value;
 
-    if (name === "" || amount === "") {
+    if(name==="" || amount===""){
         alert("Please fill all fields");
         return;
     }
 
-    let list = document.getElementById("expenseList");
-
     let li = document.createElement("li");
 
-    li.innerHTML = name + "<span>₹" + amount + "</span>";
+    li.innerHTML = `
+        <span>${name}</span>
+        <span>₹${amount}</span>
+    `;
 
-    list.appendChild(li);
+    document.getElementById("expenseList").appendChild(li);
 
-    total = total + Number(amount);
-
+    total += Number(amount);
     document.getElementById("total").innerText = total;
 
     document.getElementById("expenseName").value = "";
